@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<title>About Me - Addanki Bharadwaj</title>
+	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+	<style>
+	:root {
+		--bg: #f6f7f9;
+		--surface: #fff;
+		--ink: #14213d;
+		--muted: #5a6578;
+		--accent: #1f7a8c;
+		--hi: #f2b544;
+		--line: #d9dee7;
+		box-sizing: border-box;
+		padding-top: env(safe-area-inset-top, 0px);
+		padding-bottom: env(safe-area-inset-bottom, 0px)
+	}
+	
+	@media (prefers-color-scheme:dark) {
+		:root:not([data-theme="light"]) {
+			--bg: #0e1626;
+			--surface: #16213a;
+			--ink: #eef1f7;
+			--muted: #a3adc2;
+			--accent: #5ec2d6;
+			--hi: #f2b544;
+			--line: #2a3856
+		}
+	}
+	
+	:root[data-theme="dark"] {
+		--bg: #0e1626;
+		--surface: #16213a;
+		--ink: #eef1f7;
+		--muted: #a3adc2;
+		--accent: #5ec2d6;
+		--hi: #f2b544;
+		--line: #2a3856
+	}
+	
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 70px
+	}
+	
+	* {
+		box-sizing: border-box
+	}
+	
+	body {
+		margin: 0;
+		background: var(--bg);
+		color: var(--ink);
+		font: 18px/1.7 "Source Serif 4", Georgia, serif
+	}
+	
+	h1,
+	h2,
+	h3,
+	nav {
+		font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif
+	}
+	
+	nav {
+		position: sticky;
+		top: env(safe-area-inset-top, 0px);
+		z-index: 5;
+		background: var(--bg);
+		border-bottom: 1px solid var(--line);
+		display: flex;
+		gap: 18px;
+		padding: 12px 20px;
+		overflow-x: auto;
+		white-space: nowrap;
+		font-size: 15px;
+		font-weight: 500
+	}
+	
+	nav a {
+		color: var(--muted);
+		text-decoration: none
+	}
+	
+	nav a:hover,
+	nav a:focus-visible {
+		color: var(--accent)
+	}
+	
+	a:focus-visible,
+	button:focus-visible,
+	label:focus-within {
+		outline: 3px solid var(--hi);
+		outline-offset: 2px
+	}
+	
+	.wrap {
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 0 20px
+	}
+	
+	.hero {
+		padding: 72px 0 56px;
+		max-width: 760px
+	}
+	
+	.hero h1 {
+		font-size: clamp(24px, 3.5vw, 34px);
+		line-height: 1.2;
+		margin: 0 0 16px;
+		font-weight: 600;
+		letter-spacing: -.01em
+	}
+	
+	.hero .name {
+		font: 800 clamp(48px, 9vw, 96px)/1 "Bricolage Grotesque", sans-serif;
+		letter-spacing: -.03em;
+		margin: 0 0 18px
+	}
+	
+	nav .brand {
+		color: var(--ink);
+		font-weight: 800;
+		margin-right: 8px;
+		padding-right: 18px;
+		border-right: 1px solid var(--line)
+	}
+	
+	.hero p {
+		color: var(--muted);
+		max-width: 46ch;
+		margin: 0 0 20px
+	}
+	
+	.pill {
+		display: inline-block;
+		background: var(--hi);
+		color: #14213d;
+		font: 700 15px "Bricolage Grotesque", sans-serif;
+		padding: 8px 16px;
+		border-radius: 99px
+	}
+	
+	section {
+		padding: 56px 0;
+		border-top: 1px solid var(--line)
+	}
+	
+	h2 {
+		font-size: clamp(30px, 5vw, 44px);
+		margin: 0 0 8px;
+		letter-spacing: -.02em;
+		line-height: 1.1
+	}
+	
+	.lead {
+		color: var(--muted);
+		margin: 0 0 28px;
+		max-width: 60ch
+	}
+	
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 16px
+	}
+	
+	.ph {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 4/3;
+		background: var(--surface) center/cover no-repeat;
+		border: 2px dashed var(--line);
+		border-radius: 6px;
+		cursor: pointer;
+		color: var(--muted);
+		font: 500 15px "Bricolage Grotesque", sans-serif;
+		text-align: center;
+		padding: 10px
+	}
+	
+	.ph.tall {
+		aspect-ratio: 4/5
+	}
+	
+	.ph input {
+		position: absolute;
+		inset: 0;
+		opacity: 0;
+		cursor: pointer
+	}
+	
+	.ph.has {
+		border-style: solid;
+		border-color: transparent;
+		color: transparent
+	}
+	
+	figure {
+		margin: 0
+	}
+	
+	figcaption {
+		font-size: 15px;
+		color: var(--muted);
+		margin-top: 8px
+	}
+	
+	.tl {
+		list-style: none;
+		margin: 0;
+		padding: 0 0 0 24px;
+		border-left: 3px solid var(--accent)
+	}
+	
+	.tl li {
+		position: relative;
+		padding: 0 0 32px 12px
+	}
+	
+	.tl li::before {
+		content: "";
+		position: absolute;
+		left: -34px;
+		top: 9px;
+		width: 13px;
+		height: 13px;
+		border-radius: 50%;
+		background: var(--hi);
+		border: 3px solid var(--bg);
+		box-shadow: 0 0 0 2px var(--accent)
+	}
+	
+	.tl h3 {
+		margin: 0;
+		font-size: 22px
+	}
+	
+	.tl .when {
+		color: var(--accent);
+		font: 600 15px "Bricolage Grotesque", sans-serif
+	}
+	
+	.tl p {
+		margin: 6px 0 12px
+	}
+	
+	.tl .ph {
+		max-width: 360px
+	}
+	
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-top: 24px
+	}
+	
+	.chips span {
+		background: var(--surface);
+		border: 1px solid var(--line);
+		padding: 6px 16px;
+		border-radius: 99px;
+		font: 500 16px "Bricolage Grotesque", sans-serif
+	}
+	
+	.card {
+		background: var(--surface);
+		border-left: 6px solid var(--hi);
+		padding: 24px 28px;
+		max-width: 70ch
+	}
+	
+	.quote {
+		font-size: 22px;
+		line-height: 1.5;
+		border-left: 4px solid var(--accent);
+		padding-left: 20px;
+		margin: 24px 0;
+		max-width: 60ch
+	}
+	
+	.contact {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 14px;
+		margin-top: 24px
+	}
+	
+	.contact a {
+		display: block;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		padding: 18px 20px;
+		color: var(--ink);
+		text-decoration: none;
+		border-radius: 6px
+	}
+	
+	.contact a:hover {
+		border-color: var(--accent)
+	}
+	
+	.contact b {
+		display: block;
+		font-family: "Bricolage Grotesque", sans-serif;
+		color: var(--accent);
+		font-size: 15px
+	}
+	
+	.facts {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 16px;
+		margin-top: 8px
+	}
+	
+	.facts div {
+		background: var(--surface);
+		border-left: 6px solid var(--hi);
+		padding: 18px 22px
+	}
+	
+	.facts b {
+		display: block;
+		font: 600 15px "Bricolage Grotesque", sans-serif;
+		color: var(--accent)
+	}
+	
+	.facts span {
+		font-size: 22px
+	}
+	
+	.facts a.map {
+		display: block;
+		background: var(--surface);
+		border-left: 6px solid var(--accent);
+		padding: 18px 22px;
+		color: var(--ink);
+		text-decoration: none
+	}
+	
+	.facts a.map:hover {
+		border-left-color: var(--hi)
+	}
+	
+	.facts a.map small {
+		display: block;
+		font: 500 14px "Bricolage Grotesque", sans-serif;
+		color: var(--accent);
+		margin-top: 4px
+	}
+	
+	.facts a.map b {
+		display: block;
+		font: 600 15px "Bricolage Grotesque", sans-serif;
+		color: var(--accent)
+	}
+	
+	.jobs figcaption {
+		font-size: 17px;
+		color: var(--ink)
+	}
+	
+	.jobs figcaption b {
+		display: block;
+		font: 700 20px "Bricolage Grotesque", sans-serif
+	}
+	
+	.jobs figcaption span {
+		color: var(--accent);
+		font: 600 15px "Bricolage Grotesque", sans-serif
+	}
+	
+	.ph:not(.has) {
+		cursor: default
+	}
+	
+	.ph.has {
+		cursor: zoom-in
+	}
+	
+	.lb {
+		position: fixed;
+		inset: 0;
+		z-index: 20;
+		background: rgba(0, 0, 0, .88);
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		cursor: zoom-out
+	}
+	
+	.lb.open {
+		display: flex
+	}
+	
+	.lb img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		border-radius: 4px
+	}
+	
+	.lb button {
+		position: absolute;
+		top: calc(14px + env(safe-area-inset-top, 0px));
+		right: 16px;
+		background: #fff;
+		color: #14213d;
+		border: 0;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		font-size: 22px;
+		cursor: pointer
+	}
+	
+	footer {
+		padding: 40px 0 60px;
+		text-align: center;
+		color: var(--muted);
+		font-size: 15px;
+		border-top: 1px solid var(--line)
+	}
+	
+	@media(max-width:720px) {
+		.hero {
+			grid-template-columns: 1fr;
+			padding-top: 40px
+		}
+	}
+	
+	@media(prefers-reduced-motion:reduce) {
+		html {
+			scroll-behavior: auto
+		}
+	}
+	</style>
+</head>
+
+<body>
+	<nav> <a class="brand" href="#top">Addanki Bharadwaj</a><a href="#about">About me</a><a href="#childhood">Childhood</a><a href="#family">Family</a><a href="#education">Education</a><a href="#career">Career</a><a href="#friends">Friendships</a><a href="#hobbies">Hobbies</a><a href="#note">Note to team</a><a href="#reach">Stay in touch</a> </nav>
+	<div class="wrap">
+		<header class="hero" id="top">
+			<div>
+				<div class="name">Addanki Bharadwaj</div>
+				<p>Before I sign off, here is a little about the person behind the work: where I started, what shaped me, and what I’m taking with me.</p>
+			</div>
+		</header>
+		<section id="about">
+			<h2>About me</h2>
+			<p class="lead">Professionally, I am Senior Developer in Wipro.
+							Personally, I am an Introvert, Likes Travelling and Enjoys Spending time with My Friends</p>
+			<div class="facts">
+				<div><b>Born on</b><span>23-October-1999</span></div><a class="map" href="https://www.google.com/maps/place/Narsapur,+Andhra+Pradesh+534275/" target="_blank" rel="noopener"><b>From</b><span>Narsapur, Andhra Pradesh, India</span><small>Tap to open in Google Maps</small></a></div>
+		</section>
+		<section id="childhood">
+			<h2>Childhood</h2>
+			<p class="lead">I was born in Narsapur, Andhra Pradesh and these are the only pictures I had when I was a child.</p>
+			<div class="grid">
+				<figure>
+					<label class="ph has" style="background-image:url('image/childhood-001.png')">
+						<input type="file" accept="image/*"><span>Photo-1</span></label>
+					<figcaption>[Home, 2007]</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/childhood-002.png')">
+						<input type="file" accept="image/*"><span>Photo-2</span></label>
+					<figcaption>[Home, 2007]</figcaption>
+				</figure>
+			</div>
+		</section>
+		<section id="family">
+			<h2>My family</h2>
+			<p class="lead">My Family - My Strength</p>
+			<div class="grid">
+				<div class="grid">
+				<figure>
+					<label class="ph has" style="background-image:url('image/family-001.png')">
+						<input type="file" accept="image/*"><span>Photo-1</span></label>
+					<figcaption>[2024]</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/family-002.png')">
+						<input type="file" accept="image/*"><span>Photo-2</span></label>
+					<figcaption>[2026]</figcaption>
+				</figure>
+			</div>
+			</div>
+		</section>
+		<section id="education">
+			<h2>Education</h2>
+			<ul class="tl">
+				<li><span class="when">2015</span>
+					<h3>10th - Narayana Techno School</h3>
+					<p>Narsapur, Andhra Pradesh</p>
+				</li>
+				<li><span class="when">2015-17</span>
+					<h3>Intermediate - Sri Gowthami Junior College</h3>
+					<p>Narsapur, Andhra Pradesh</p>
+				</li>
+				<li><span class="when">2017-21</span>
+					<h3>B.Tech - Swarnandhra Institute of Engineering and Technology</h3>
+					<p>CSE</p>
+					<p>Seetharampuram, Andhra Pradesh</p>
+				</li>
+			</ul>
+		</section>
+		<section id="career">
+			<h2>Career</h2>
+			<p class="lead">Joined WIPRO in 2021 as Associate Consultant and become an Senior Developer in 2026.</p>
+			<div class="grid jobs">
+				<figure>
+					<label class="ph has" style="background-image:url('image/career-001.png')">
+						<input type="file" accept="image/*"><span>Photo-1</span></label>
+					<figcaption><span>2023</span></figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/career-002.png')">
+						<input type="file" accept="image/*"><span>Photo-2</span></label>
+					<figcaption><span>2025</span></figcaption>
+				</figure>
+			</div>
+		</section>
+		<section id="friends">
+			<h2>Friendships I made here</h2>
+			<p class="lead">The best part of any job is the people. To me, they are my second family. All those parties, lunches, late-night work, inside jokes, and many more in a glimpse.</p>
+			<div class="grid">
+				<figure>
+					<label class="ph has" style="background-image:url('image/friends-001.png')">
+						<input type="file" accept="image/*"><span>Photo-1</span></label>
+					<figcaption>[Ananthagiri]</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/friends-002.png')">
+						<input type="file" accept="image/*"><span>Photo-2</span></label>
+					<figcaption>[Meetup]</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/friends-003.png')">
+						<input type="file" accept="image/*"><span>Photo-3</span></label>
+					<figcaption>[Diwali]</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/friends-004.png')">
+						<input type="file" accept="image/*"><span>Photo-4</span></label>
+					<figcaption>[Manali]</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/friends-005.png')">
+						<input type="file" accept="image/*"><span>Photo-5</span></label>
+					<figcaption>[Office]</figcaption>
+				</figure>
+			</div>
+		</section>
+		<section id="hobbies">
+			<h2>Hobbies</h2>
+			<p class="lead">Travelling</p>
+			<div class="grid">
+				<figure>
+					<label class="ph has" style="background-image:url('image/travel-001.png')">
+						<input type="file" accept="image/*"><span>Photo-1</span></label>
+					<figcaption>Kedarnath</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/travel-002.png')">
+						<input type="file" accept="image/*"><span>Photo-1</span></label>
+					<figcaption>Manali</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/travel-003.png')">
+						<input type="file" accept="image/*"><span>Photo-1</span></label>
+					<figcaption>Shimla</figcaption>
+				</figure>
+				<figure>
+					<label class="ph has" style="background-image:url('image/travel-004.png')">
+						<input type="file" accept="image/*"><span>Photo-1</span></label>
+					<figcaption>Pondicherry</figcaption>
+				</figure>
+			</div>
+			<div class="chips"><span>Photography</span><span>Marvel Movies/Shows</span><span>Sci-fi Genre Movies</span><span>Teaching</span></div>
+		</section>
+		<section id="note">
+			<h2>A note to the team</h2>
+			<h2 style="margin-top:48px">Thank you</h2>
+			<p class="quote">Thank you Donna and Ravi for the support you have provided me. You will both be the reason for whom I was today. Also I want to thank Krishnaveni, Sukanya, Sai Teja, Sai Panjala, Usha, Ramya, Ramakrishna, and our new team members : Padma, Jagadeesh, Harshita, Saranya for bearing with me. I will forever cherish the time we spent together individually and as a team :)</p>
+		</section>
+		<section id="reach">
+			<h2>Let’s stay in touch</h2>
+			<p class="lead">Work paths may change, but the friendships do not have to.</p>
+			<div class="contact"> <a href="mailto:bharadwaj.addanki555@gmail.com"><b>Email</b>bharadwaj.addanki555</a> <a href="tel:+91 9110755646"><b>Phone / WhatsApp</b>+91 9110755646</a> <a href="https://www.linkedin.com/in/addanki-bharadwaj"><b>LinkedIn</b>linkedin.com/in/addanki-bharadwaj</a> </div>
+		</section>
+	</div>
+	<footer>Thank you for the memories. – Addanki Bharadwaj</footer>
+	<script>
+	var lb = document.createElement('div');
+	lb.className = 'lb';
+	lb.setAttribute('role', 'dialog');
+	lb.setAttribute('aria-label', 'Photo viewer');
+	lb.innerHTML = '<img alt=""><button type="button" aria-label="Close">×</button>';
+	document.body.appendChild(lb);
+	var lbImg = lb.querySelector('img');
+
+	function closeLb() {
+		lb.classList.remove('open');
+		lbImg.removeAttribute('src');
+	}
+	lb.addEventListener('click', closeLb);
+	document.addEventListener('keydown', function(e) {
+		if(e.key === 'Escape') closeLb();
+	});
+
+	function openLb(p) {
+		var m = (p.style.backgroundImage || '').match(/url\(["']?(.*?)["']?\)/);
+		if(!m) return;
+		lbImg.src = m[1];
+		lb.classList.add('open');
+	}
+	document.querySelectorAll('.ph').forEach(function(p) {
+		var inp = p.querySelector('input');
+		if(inp) inp.remove();
+		var has = !!p.style.backgroundImage;
+		if(has) {
+			p.classList.add('has');
+			p.setAttribute('tabindex', '0');
+			p.setAttribute('role', 'button');
+			p.setAttribute('aria-label', 'View photo larger');
+			p.addEventListener('click', function() {
+				openLb(p);
+			});
+			p.addEventListener('keydown', function(e) {
+				if(e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					openLb(p);
+				}
+			});
+		} else {
+			var s = p.querySelector('span');
+			if(s) s.textContent = 'Photo coming soon';
+		}
+	});
+	</script>
+</body>
+
+</html>
